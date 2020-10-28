@@ -34,5 +34,6 @@
         <a href="https://elixir-slackin.herokuapp.com/">Elixir on Slack</a>
       </li>
     </ul>
+    <%= render(Phoenix_APIWeb.PageView, "test.html", message: "Hello from manually render file!") %>
   </article>
 </section>
