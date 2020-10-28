@@ -2,7 +2,7 @@ defmodule Phoenix_APIWeb.Router do
   use Phoenix_APIWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    plug :accepts, ["html","text"]
     plug :fetch_session
     plug :fetch_flash
     plug :protect_from_forgery
@@ -19,9 +19,15 @@ defmodule Phoenix_APIWeb.Router do
     get "/", PageController, :index
     get "/hello", HelloController, :index
     get "/hello/:message", HelloController, :show
+    get "/redirect_test", HelloController, :redirect_test
+
     # resources "/users", UserController
     # resources "/posts" , PostController, only: [:index, :show]
     # resources "/comments", CommentController, except: [:delete]
+  end
+  scope "/ping", Phoenix_APIWeb, as: :ping do
+    pipe_through :api
+    get "/", PingController, :index
   end
 
   # Other scopes may use custom stacks.

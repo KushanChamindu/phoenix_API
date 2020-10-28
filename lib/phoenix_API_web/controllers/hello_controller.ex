@@ -22,4 +22,7 @@ defmodule Phoenix_APIWeb.HelloController do
     |> put_layout("admin.html")
     |> render("show.html", message: message)
   end
+  def redirect_test(conn, _params) do
+    redirect(conn, to: "/")
+  end
 end
