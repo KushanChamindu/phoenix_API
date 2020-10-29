@@ -1,10 +1,11 @@
 defmodule Phoenix_APIWeb.HelloController do
   use Phoenix_APIWeb, :controller
+  alias Phoenix_API.Accounts
 
   def index(conn, _params) do
     # render(conn, "index.html")
     conn
-    |> render("index.html")
+    |> render("index.html", message: Accounts.get_user!(Plug.Conn.get_session(conn, :user_id)))
     # pages = [%{title: "foo"}, %{title: "bar"}]
     # render(conn, "index.json", pages: pages)
   end
